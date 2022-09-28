@@ -37,7 +37,7 @@ const Register = () => {
         </div>
         <div className={styles.bottom}>
           <input type='button' value='다음' />
-          <Link to="/"><p>로그인하기</p></Link>
+          <Link to="/login"><p>로그인</p></Link>
         </div>
       </div>
       <div className={styles.sign_up}>
