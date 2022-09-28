@@ -1,0 +1,106 @@
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../../assets/background.jpg') 100% 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 340px;
+    height: 760px;
+    background-color: #fff;
+    border-radius: 25px;
+     box-shadow: 40px 40px 0px #7575754b;
+
+    .title {
+      margin-top: 35px;
+
+      h1 {
+        display: flex;
+        align-items: center;
+
+        .documentImage {
+          width: 65px;
+          vertical-align: bottom;
+        }
+      }
+    }
+  
+    .inputBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 450px;
+      margin-top: 95px;
+
+      div {
+        margin: 13px 0;
+
+        p {
+          font-weight: 900;
+          color: #828282;
+          margin-bottom: 5px;
+        }
+  
+        input {
+          width: 250px;
+          height: 40px;
+          background-color: #F6F6F6;
+          border: 0;
+          border-radius: 7px;
+          margin-left: 7px;
+          padding-left: 3px;
+        }
+      }
+
+    }
+
+    .bottom {
+      margin-bottom: 60px;
+
+      input {
+        cursor: pointer;
+        padding: 10px 30px;
+        border: 0px;
+        border-radius: 10px;
+        background-color: #9776ff;
+        font-weight: 900;
+        color: #fff;
+      }
+
+      a {
+        text-decoration: none;
+        
+        p {
+          font-size: small;
+          text-align: center;
+          color: #828282;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .login {
+    position: absolute;
+    margin-right: -460px;
+    font-weight: 900;
+    font-size: 80px;
+    color: #9776ff;
+    -webkit-transform: rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+}
