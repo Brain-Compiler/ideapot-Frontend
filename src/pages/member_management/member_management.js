@@ -1,9 +1,9 @@
 import React from "react";
 import styles from './member_management.module.scss'
-import Register from '../../assets/register.png'
-import Login from '../../assets/login.png'
-import Id from '../../assets/id.png'
-import Password from '../../assets/password.png'
+import register from '../../assets/register.png'
+import login from '../../assets/login.png'
+import id from '../../assets/id.png'
+import password from '../../assets/password.png'
 import { Link } from "react-router-dom";
 
 const MemberManagement = () => {
@@ -15,19 +15,19 @@ const MemberManagement = () => {
         </div>
         <div className={styles.linkBox}>
           <Link className={styles.link} to='/register'>
-            <img alt="register" src={Register} />
+            <img alt="register" src={register} />
             <p>회원가입</p>
           </Link>
           <Link className={styles.link} to='/login'>
-            <img alt="login" src={Login} />
+            <img alt="login" src={login} />
             <p>로그인</p>
           </Link>
           <Link className={styles.link} to='/'>
-            <img alt="id" src={Id} />
+            <img alt="id" src={id} />
             <p>아이디 찾기</p>
           </Link>
           <Link className={styles.link} to='/'>
-            <img alt="password" src={Password} />
+            <img alt="password" src={password} />
             <p>비밀번호 찾기</p>
           </Link>
         </div>
