@@ -101,6 +101,25 @@
       }
     }
 
+    .box {
+      width: 340px;
+      text-align: center;
+      
+      p {
+        font-size: large;
+      }
+      
+      .idBox {
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 250px;
+        height: 40px;
+        background-color: #f6f6f6;
+        line-height: 40px;
+        border-radius: 10px;
+      }
+    }
+
     .bottom {
       display: flex;
       flex-direction: column;
