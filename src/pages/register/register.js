@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import styles from './register.module.scss'
 import document from '../../assets/document.png'
 import checkMark from '../../assets/check_mark_white.png'

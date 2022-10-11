@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import document from "../../assets/document.png";
 import plane from "../../assets/paper_plane_white.png"
 import checkMark from "../../assets/check_mark_white.png";

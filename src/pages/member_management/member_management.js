@@ -1,4 +1,3 @@
-import React from "react";
 import styles from './member_management.module.scss'
 import register from '../../assets/register.png'
 import login from '../../assets/login.png'
