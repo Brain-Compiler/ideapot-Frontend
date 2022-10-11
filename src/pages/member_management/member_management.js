@@ -26,7 +26,7 @@ const MemberManagement = () => {
             <img alt="id" src={id} />
             <p>아이디 찾기</p>
           </Link>
-          <Link className={styles.link} to='/'>
+          <Link className={styles.link} to='/resetPw'>
             <img alt="password" src={password} />
             <p>비밀번호 찾기</p>
           </Link>

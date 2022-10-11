@@ -45,12 +45,12 @@ const SearchId = () => {
             <input type="button" value="찾기" />
             <Link to='/login'><p>로그인</p></Link>
             <Link to='/register'><p>회원가입</p></Link>
-            <Link to='/'><p>비밀번호 찾기</p></Link>
+            <Link to='/resetPw'><p>비밀번호 찾기</p></Link>
           </div>
         ) : (
           <div className={styles.bottom}>
             <input type="button" value="로그인 하러가기" onClick={() => window.location.replace("/login")} /> <br />
-            <input type="button" value="비밀번호 찾기" onClick={() => window.location.replace("/")} />
+            <input type="button" value="비밀번호 찾기" onClick={() => window.location.replace("/resetPw")} />
           </div>
         )}
       </div>
