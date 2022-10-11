@@ -26,7 +26,7 @@ const Login = () => {
         <div className={styles.bottom}>
           <input type='button' value='로그인' />
           <Link to="/register"><p>회원가입</p></Link>
-          <Link to="/"><p>아이디 찾기</p></Link>
+          <Link to="/searchId"><p>아이디 찾기</p></Link>
           <Link to="/"><p>비밀번호 찾기</p></Link>
         </div>
       </div>

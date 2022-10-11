@@ -22,7 +22,7 @@ const MemberManagement = () => {
             <img alt="login" src={login} />
             <p>로그인</p>
           </Link>
-          <Link className={styles.link} to='/'>
+          <Link className={styles.link} to='/searchId'>
             <img alt="id" src={id} />
             <p>아이디 찾기</p>
           </Link>
