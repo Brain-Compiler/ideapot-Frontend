@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from './register.module.scss'
+import axios from "axios"
 import document from '../../assets/document.png'
 import checkMark from '../../assets/check_mark_white.png'
 import arrow from '../../assets/arrow_left_white.png'
@@ -10,6 +11,7 @@ import { Link } from "react-router-dom"
 const Register = () => {
   const [name, setName] = useState('')
   const [id, setId] = useState('')
+  const [isCheckId, setIsCheckId] = useState(false) 
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
   const [email, setEmail] = useState('')
@@ -17,6 +19,27 @@ const Register = () => {
   const [page, setPage] = useState(1)
   const [personalData, setPersonalData] = useState(false)
   const [terms, setTerms] = useState(false)
+
+  useEffect(() => {
+    setIsCheckId(false)
+  }, [id])
+
+  const checkId = async () => {
+    if(id === '') {
+      alert('아이디를 입력 해주세요')
+    } else {
+      await axios.get(`http://localhost:8080/api/id-duplicate-check?username=${id}`)
+      .then((res) => {
+        if(res.data.error === '없음') {
+          setIsCheckId(true)
+          alert('사용 가능한 아이디입니다')
+        } else {
+          setIsCheckId(false)
+          alert('사용 할 수 없는 아이디입니다')
+        }
+      })
+    }
+  }
 
   const checkInput = () => {
     if (name === '') {
@@ -28,7 +51,11 @@ const Register = () => {
     } else if (passwordCheck !== password) {
       alert('비밀번호를 확인해주세요');
     } else {
-      setPage(2)
+      if(isCheckId) {
+        setPage(2)
+      } else {
+        alert('아이디 중복확인을 해주세요')
+      }
     }
   }
 
@@ -46,8 +73,8 @@ const Register = () => {
             </div>
             <div className={styles.idInput}>
               <p>아이디</p>
-              <input type='text' value={id} onChange={e => setId(e.target.value)} /> <label htmlFor="idCheck"><img className={styles.checkMarkImage} alt='checkMark' src={checkMark} /></label>
-              <input type='button' id='idCheck' className={styles.checkButton} />
+              <input type='text' name="id" value={id} onChange={e => setId(e.target.value)} /> <label htmlFor="idCheck"><img className={styles.checkMarkImage} alt='checkMark' src={checkMark} /></label>
+              <input type='button' id='idCheck' className={styles.checkButton} onClick={checkId} />
             </div>
             <div className={styles.passwordInput}>
               <p>비밀번호</p>
