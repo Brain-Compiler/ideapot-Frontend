@@ -125,8 +125,15 @@
         }
         
         img {
+          cursor: pointer;
           width: 150px;
+          height: 150px;
           margin-left: 30px;
+          border-radius: 50%;
+        }
+
+        input {
+          display: none;
         }
       }
 

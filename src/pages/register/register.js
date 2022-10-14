@@ -4,7 +4,7 @@ import axios from "axios"
 import document from '../../assets/document.png'
 import checkMark from '../../assets/check_mark_white.png'
 import arrow from '../../assets/arrow_left_white.png'
-import profile from '../../assets/userIcon.png'
+import profileIcon from '../../assets/userIcon.png'
 import plane from '../../assets/paper_plane_white.png'
 import { Link } from "react-router-dom"
 
@@ -14,9 +14,10 @@ const Register = () => {
   const [isCheckId, setIsCheckId] = useState(false) 
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
+  const [profile, setProfile] = useState(profileIcon)
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(2)
   const [personalData, setPersonalData] = useState(false)
   const [terms, setTerms] = useState(false)
 
@@ -59,6 +60,24 @@ const Register = () => {
     }
   }
 
+  const changeProfile = (e) => {
+    if(e.target.files[0]) {
+      setProfile(e.target.files[0])
+    } else {
+      setProfile(profileIcon)
+    }
+
+    const render = new FileReader()
+    render.onload = () => {
+      if(render.readyState === 2) {
+        setProfile(render.result)
+      }
+    }
+     
+    render.readAsDataURL(e.target.files[0])
+  }
+
+
   return (
     <div className={styles.background}>
       <div className={styles.main}>
@@ -92,7 +111,8 @@ const Register = () => {
             </div>
             <div className={styles.profile}>
               <p>프로필</p>
-              <img alt="profile" src={profile} />
+              <label htmlFor='profileInput'><img alt='profile' src={profile} /></label>
+              <input type='file' id='profileInput' accept='image/*' name='profileIcon' onChange={changeProfile} />
             </div>
             <div className={styles.emailInput}>
               <p>이메일</p>
