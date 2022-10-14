@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from './register.module.scss'
 import axios from "axios"
 import document from '../../assets/document.png'
@@ -11,23 +11,30 @@ import { Link } from "react-router-dom"
 const Register = () => {
   const [name, setName] = useState('')
   const [id, setId] = useState('')
-  const [isCheckId, setIsCheckId] = useState(false) 
+  const [isCheckId, setIsCheckId] = useState(false)
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
   const [profile, setProfile] = useState(profileIcon)
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
+  const [isCheckCode, setIsCheckCode] = useState(false)
   const [page, setPage] = useState(2)
   const [personalData, setPersonalData] = useState(false)
   const [terms, setTerms] = useState(false)
+  const emailInput = useRef(null)
+  const codeInput = useRef(null)
 
   useEffect(() => {
     setIsCheckId(false)
   }, [id])
 
+  useEffect(() => {
+    setIsCheckCode(false)
+  }, [email])
+
   const checkId = async () => {
     if(id === '') {
-      alert('아이디를 입력 해주세요')
+      alert('아이디를 입력해주세요')
     } else {
       await axios.get(`http://localhost:8080/api/id-duplicate-check?username=${id}`)
       .then((res) => {
@@ -42,20 +49,73 @@ const Register = () => {
     }
   }
 
-  const checkInput = () => {
-    if (name === '') {
-      alert('이름을 입력해주세요');
-    } else if (id === '') {
-      alert('아이디를 입력해주세요');
-    } else if (password === '') {
-      alert('비밀번호를 확인해주세요');
-    } else if (passwordCheck !== password) {
-      alert('비밀번호를 확인해주세요');
-    } else {
-      if(isCheckId) {
-        setPage(2)
+  const checkEmail = async () => {
+    if(isCheckCode === false) {
+      if(email === '') {
+        alert('이메일을 입력해주세요')
       } else {
-        alert('아이디 중복확인을 해주세요')
+        await axios.post('http://localhost:8080/api/email-authentication/sign-up', {
+          name: name,
+          email: email,
+        }).then(() => alert('이메일이 전송되었습니다'))
+      }
+    }
+  }
+
+  const checkCode = async () => {
+    if(isCheckCode === false) {
+      if(code === '') {
+        alert('인증코드를 입력해주세요')
+      } else {
+        await axios.post('http://localhost:8080/api/email-authentication/check-code', {
+          email: email,
+          code: code,
+        })
+        .then((res) => {
+          if(res.data.error === '없음') {
+            setIsCheckCode(true)
+            emailInput.current.readOnly = true
+            emailInput.current.style = "background-color: #ABABAB"
+            codeInput.current.readOnly = true
+            codeInput.current.style = "background-color: #ABABAB"
+            alert('인증되었습니다')
+          } else {
+            setIsCheckCode(false)
+            alert('인증코드가 틀렸습니다')
+          }
+        })
+      }
+    } else {
+      alert('이미 인증되었습니다')
+    }
+  }
+
+  const checkInput = () => {
+    if(page === 1) {
+      if (name === '') {
+        alert('이름을 입력해주세요');
+      } else if (id === '') {
+        alert('아이디를 입력해주세요');
+      } else if (password === '') {
+        alert('비밀번호를 확인해주세요');
+      } else if (passwordCheck !== password) {
+        alert('비밀번호를 확인해주세요');
+      } else {
+        if(isCheckId) {
+          setPage(2)
+        } else {
+          alert('아이디 중복확인을 해주세요')
+        }
+      }
+    } else {
+      if(email === '') {
+        alert('이메일을 입력해주세요')
+      } else if (isCheckCode === false) {
+        alert('이메일을 인증해주세요')
+      } else if (personalData === false) {
+        alert('개인정보 이용을 동의해주세요')
+      } else if (terms === false) {
+        alert('이용약관을 동의해주세요')
       }
     }
   }
@@ -116,13 +176,13 @@ const Register = () => {
             </div>
             <div className={styles.emailInput}>
               <p>이메일</p>
-              <input type='text' value={email} onChange={e => setEmail(e.target.value)} /> <label htmlFor="send"><img className={styles.planeImage} alt='plane' src={plane} /></label>
-              <input type='button' id='send' className={styles.sendButton} />
+              <input type='text' ref={emailInput} value={email} onChange={e => setEmail(e.target.value)} /> <label htmlFor="send"><img className={styles.planeImage} alt='plane' src={plane} /></label>
+              <input type='button' id='send' className={styles.sendButton} onClick={checkEmail} />
             </div>
             <div className={styles.codeInput}>
               <p>인증코드</p>
-              <input type='text' value={code} onChange={e => setCode(e.target.value)} /> <label htmlFor="codeCheck"><img className={styles.checkImage} alt='checkMark' src={checkMark} /></label>
-              <input type='button' id='codeCheck' className={styles.checkButton} />
+              <input type='text' ref={codeInput} value={code} onChange={e => setCode(e.target.value)} /> <label htmlFor="codeCheck"><img className={styles.checkImage} alt='checkMark' src={checkMark} /></label>
+              <input type='button' id='codeCheck' className={styles.checkButton} onClick={checkCode} />
             </div>
             <div className={styles.checkBox} >
               <div className={styles.personalData}>
@@ -140,7 +200,7 @@ const Register = () => {
           { page === 1 ? (
             <input type='button' value='다음' onClick={checkInput}/>
           ) : (
-            <input type='button' value='가입' />
+            <input type='button' value='가입' onClick={checkInput} />
           )}
           <Link to="/login"><p>로그인</p></Link>
         </div>
