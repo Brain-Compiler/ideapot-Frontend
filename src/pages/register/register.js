@@ -18,7 +18,7 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
   const [isCheckCode, setIsCheckCode] = useState(false)
-  const [page, setPage] = useState(2)
+  const [page, setPage] = useState(1)
   const [personalData, setPersonalData] = useState(false)
   const [terms, setTerms] = useState(false)
   const emailInput = useRef(null)
