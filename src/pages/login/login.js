@@ -1,13 +1,16 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { useCookies } from "react-cookie"
 import document from '../../assets/document.png'
 import styles from './login.module.scss'
-import { Link } from "react-router-dom"
 import axios from "axios"
 import qs from 'qs'
+import moment from "moment/moment"
 
 const Login = () => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
+  const [cookies, setCookies, removeCookies] = useCookies(['token'])
 
   const loginHandler = async () => {
     const data = qs.stringify({
@@ -16,7 +19,10 @@ const Login = () => {
     })
 
     await axios.post('http://localhost:8080/api/login', data)
-    .then(res => console.log(res.data))
+    .then((res) => {
+      const expires = moment().add('30', 'm').toDate()
+      setCookies('token', res.data.access_token, {expires})
+    })
   }
 
   return (
