@@ -1,0 +1,64 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 430px;
+  background-color: #fff;
+  margin-top: 30px;
+  
+  .link {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #D8D8D8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      font-weight: 900;
+      color: #000;
+    }
+
+    .menu {
+      width: 850px;
+      display: flex;
+      justify-content: space-around;
+      
+      p {
+        color: #D8D8D8;
+      }
+    }
+
+    .partner {
+
+      a {
+        display: flex;
+        align-items: center;
+        
+        svg {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .main {
+    display: flex;
+    height: 300px;
+    margin: auto 0;
+    flex-direction: column;
+    justify-content: space-around;
+
+    p {
+      color: #6d6d6d;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    span {
+      margin: 0 10px;
+      color: #D8D8D8;
+    }
+ }
+}
