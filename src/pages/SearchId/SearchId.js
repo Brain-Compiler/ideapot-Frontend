@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import styles from "./search_id.module.scss";
+import styles from "./SearchId.module.scss";
 import document from "../../assets/document.png"
 import plane from "../../assets/paper_plane_white.png";
 import checkMark from "../../assets/check_mark_white.png";

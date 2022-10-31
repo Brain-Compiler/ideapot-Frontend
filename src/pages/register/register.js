@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import styles from './register.module.scss'
+import styles from './Register.module.scss'
 import axios from "axios"
 import document from '../../assets/document.png'
 import checkMark from '../../assets/check_mark_white.png'

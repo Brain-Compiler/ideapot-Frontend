@@ -1,4 +1,4 @@
-import styles from './member_management.module.scss'
+import styles from './MemberManagement.module.scss'
 import register from '../../assets/register.png'
 import login from '../../assets/login.png'
 import id from '../../assets/id.png'

@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
+import styles from "./ResetPw.module.scss";
 import document from "../../assets/document.png";
 import plane from "../../assets/paper_plane_white.png";
 import checkMark from "../../assets/check_mark_white.png";
-import styles from "./reset_pw.module.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

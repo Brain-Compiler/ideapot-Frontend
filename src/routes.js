@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Register from "./pages/register/register";
-import Login from './pages/login/login'
-import MemberManagement from './pages/member_management/member_management'
-import SearchId from "./pages/search_id/search_id"
-import ResetPw from "./pages/reset_pw/reset_pw"
-import Error404 from "./pages/error/404"
+import Register from "./pages/Register/Register";
+import Login from './pages/Login/Login';
+import MemberManagement from './pages/MemberManagement/MemberManagement';
+import SearchId from "./pages/SearchId/SearchId";
+import ResetPw from "./pages/ResetPw/ResetPw";
+import Error404 from "./pages/Error/404";
 
 const Router = () => {
   return (

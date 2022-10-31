@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./footer.module.scss";
+import styles from "./Footer.module.scss";
 import { FaAngleRight } from "react-icons/fa";
 
 const Footer = () => {

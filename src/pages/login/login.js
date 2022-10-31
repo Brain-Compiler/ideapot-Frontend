@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useCookies } from "react-cookie"
+import styles from './Login.module.scss'
 import document from '../../assets/document.png'
-import styles from './login.module.scss'
 import axios from "axios"
 import qs from 'qs'
 import moment from "moment/moment"

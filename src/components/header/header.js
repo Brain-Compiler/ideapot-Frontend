@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 import logo from "../../assets/logo_icon.png";
 import search from "../../assets/search_icon.png"
 import write from "../../assets/write_icon.png"

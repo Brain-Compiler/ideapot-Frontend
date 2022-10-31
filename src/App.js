@@ -1,7 +1,7 @@
-import "./styles/reset.scss";
-import Router from "./routes";
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
+import "./styles/Reset.scss";
+import Router from "./Routes";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
