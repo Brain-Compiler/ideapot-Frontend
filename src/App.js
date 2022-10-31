@@ -1,12 +1,14 @@
 import "./styles/reset.scss";
 import Router from "./routes";
-import Header from "./components/header/header"
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (
-    <div>
+    <div className="background">
       <Header />
       <Router />
+      <Footer />
     </div>
   );
 }
