@@ -1,0 +1,38 @@
+.box {
+  display: flex;
+  justify-content: space-around ;
+  height: 45px;
+  background-color: #fff;
+
+    div:nth-child(3) {
+      width: 220px;
+    }
+
+    
+    .category {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        margin: 0 5px;
+      }
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    .etc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 400px;
+
+      a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+}
