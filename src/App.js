@@ -1,5 +1,5 @@
 import "./styles/Reset.scss";
-import Router from "./Routes";
+import Router from "./Router";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
