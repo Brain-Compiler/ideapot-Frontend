@@ -1,9 +1,11 @@
+@import "/src/styles/Global.scss";
+
 .background {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 961px;
-  background-color: #9776ff;
+  background-color: $color-logo;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -28,7 +30,7 @@
       flex-wrap: wrap;
       align-items: center;
       margin-top: 70px;
-      
+
       .link {
         display: flex;
         flex-direction: column;
