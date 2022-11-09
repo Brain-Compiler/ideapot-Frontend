@@ -1,0 +1,68 @@
+@import "/src/styles/Global.scss";
+
+.swiper-container {
+  --swiper-theme-color: #fff;
+  background-color: var(--swiper-pagination-bullet-inactive-color, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+  }
+
+  .slider1 {
+    background-color: $color-logo;
+  }
+
+  .slider2 {
+    background-color: blue;
+  }
+
+  .slider3 {
+    background-color: red;
+  }
+
+  .slider4 {
+    background-color: aqua;
+  }
+
+  .slider5 {
+    background-color: darkorange;
+  }
+
+  .swiper-pagination {
+    &-bullet {
+      background-color: #fff;
+      opacity: 0.5;
+
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slider-btn {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    z-index: 2;
+
+    div {
+      width: 300px;
+    }
+
+    button {
+      border: none;
+    }
+
+    .btn {
+      cursor: pointer;
+      width: 40px;
+    }
+  }
+}
