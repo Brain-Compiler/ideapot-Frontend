@@ -1,38 +1,38 @@
 .box {
   display: flex;
-  justify-content: space-around ;
+  justify-content: space-around;
   height: 45px;
   background-color: #fff;
-  box-shadow: 0 1px 3px #000;
+  box-shadow: 0 1px 3px #00000080;
 
-    div:nth-child(3) {
-      width: 220px;
-    }
-    
-    .category {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
+  div:nth-child(3) {
+    width: 220px;
+  }
 
-      svg {
-        margin: 0 5px;
-      }
+  .category {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
-      p {
-        font-weight: bold;
-      }
+    svg {
+      margin: 0 5px;
     }
 
-    .etc {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 400px;
-
-      a {
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-      }
+    p {
+      font-weight: bold;
     }
+  }
+
+  .etc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+
+    a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+  }
 }
