@@ -48,8 +48,8 @@
   .slider-btn {
     position: absolute;
     display: flex;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: space-between;
+    width: $width-base;
     z-index: 2;
 
     div {
