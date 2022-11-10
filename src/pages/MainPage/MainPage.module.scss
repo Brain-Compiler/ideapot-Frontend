@@ -1,3 +1,31 @@
-.box {
-  height: 3000px;
+@import "src/styles/Global.scss";
+
+.wrap {
+  .box {
+    height: 3000px;
+
+    .tipBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 700px;
+
+      .tip {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: $width-base;
+      }
+
+      p {
+        font-size: 28px;
+      }
+
+      img {
+        width: 500px;
+        border-radius: 30px;
+      }
+    }
+  }
 }
