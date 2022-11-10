@@ -1,87 +1,95 @@
-.box {
+@import "src/styles/Global.scss";
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 70px;
   background-color: #fff;
   margin-bottom: 1px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-    
-  .title {
 
-    a {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #000;
-      font-size: large;
-
-      img {
-        height: 35px;
-        margin-right: 5px;
-      }
-    }
-  }
-
-  .search {
-    width: 500px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    background-color: #F1F1F5;
-    border-radius: 30px;
-    
-    .searchBar {
-      width: 440px;
-      padding: 0 15px;
-      height: 100%;
-      border: none;
-      border-radius: 30px;
-      background-color: #F1F1F5;
-    }
-
-    img {
-      padding-right: 40%;
-      margin-top: 6px;
-      height: 22px;
-      cursor: pointer;
-    }
-    
-    .searchBtn {
-      visibility: hidden;
-    }
-  }
-
-  .sub {
-    width: 180px;
-    height: 40px;
+  .box {
+    width: $width-base;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
-    .write {
-      display: flex;
-      align-items: center;
-
+    .title {
       a {
         display: flex;
         align-items: center;
-        color: #000;
         text-decoration: none;
-        cursor: pointer;
+        color: #000;
+        font-size: large;
 
         img {
-          height: 25px;
+          height: 35px;
           margin-right: 5px;
         }
       }
     }
 
-    .profile {
-      
-      a {
-        cursor: pointer;
+    .search {
+      width: 500px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      background-color: #f1f1f5;
+      border-radius: 30px;
 
-        img {
-          height: 40px;
+      .searchBar {
+        width: 440px;
+        padding: 0 15px;
+        height: 100%;
+        border: none;
+        border-radius: 30px;
+        background-color: #f1f1f5;
+      }
+
+      img {
+        padding-right: 40%;
+        margin-top: 6px;
+        height: 22px;
+        cursor: pointer;
+      }
+
+      .searchBtn {
+        visibility: hidden;
+      }
+    }
+
+    .sub {
+      width: 180px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .write {
+        display: flex;
+        align-items: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+
+          img {
+            height: 25px;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .profile {
+        a {
+          cursor: pointer;
+
+          img {
+            height: 40px;
+          }
         }
       }
     }
