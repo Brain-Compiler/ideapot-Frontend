@@ -1,0 +1,21 @@
+@import "/src/styles/Global.scss";
+
+.wrap {
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    width: $width-base;
+    margin-top: 30px;
+
+    .main {
+      width: 1200px;
+      height: 100px;
+      background-color: red;
+    }
+  }
+}
