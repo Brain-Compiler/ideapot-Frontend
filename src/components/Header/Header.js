@@ -43,7 +43,7 @@ const Header = () => {
         </div>
         <div className={styles.sub}>
           <div className={styles.write}>
-            <Link to="/">
+            <Link to="/post">
               <img src={write} alt="write" />
               등록
             </Link>
