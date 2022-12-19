@@ -1,10 +1,10 @@
 @import "/src/styles/Global.scss";
 
 .wrap {
-  height: 1000px;
   display: flex;
   justify-content: center;
   background-color: #fff;
+  min-height: 1000px;
 
   .box {
     display: flex;
@@ -14,8 +14,64 @@
 
     .main {
       width: 1200px;
-      height: 100px;
-      background-color: red;
+      // background-color: red;
+
+      .head {
+        margin-top: 10px;
+        margin-bottom: 70px;
+        display: flex;
+        justify-content: space-between;
+
+        .area {
+          display: flex;
+          justify-content: space-between;
+          width: 200px;
+
+          .subCategory {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #c2c2c2;
+            border-radius: 5px;
+            padding: 8px 15px;
+          }
+
+          .price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #c2c2c2;
+            border-radius: 5px;
+            padding: 8px 15px;
+          }
+        }
+
+        .writeBtn {
+          display: flex;
+          width: 60px;
+          justify-content: space-between;
+          padding: 8px 15px;
+          border: 1px solid #c2c2c2;
+          border-radius: 5px;
+          text-decoration: none;
+          color: #000;
+
+          img {
+            width: 20px;
+          }
+        }
+      }
+
+      .posts {
+        width: 100%;
+
+        .postsSub {
+          display: flex;
+          margin-left: -12px;
+          width: calc(100% + 25px);
+          flex-wrap: wrap;
+        }
+      }
     }
   }
 }
