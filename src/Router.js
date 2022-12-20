@@ -8,7 +8,8 @@ import SearchId from "./pages/SearchId/SearchId";
 import ResetPw from "./pages/ResetPw/ResetPw";
 import Error404 from "./pages/Error/404";
 import Post from "./pages/Post/post";
-import PostViewer from "./pages/PostViewer/PostViewer";
+import PostView from "./pages/PostView/PostView";
+import ImageItem from "./components/PostView/ImageItem/ImageItem";
 
 const Router = () => {
   return (
@@ -20,8 +21,10 @@ const Router = () => {
       <Route path="/ResetPw" element={<ResetPw />} />
       <Route path="/Post" element={<Post />} />
       <Route path="/ProductList" element={<ProductList />} />
-      <Route path="/ProductList/:id" element={<PostViewer />} />
+      <Route path="/ProductList/:id" element={<ProductList />} />
+      <Route path="/ProductList/Post/:id" element={<PostView />} />
       <Route path="*" element={<Error404 />} />
+      <Route path="/test" element={<ImageItem />} />
     </Routes>
   );
 };

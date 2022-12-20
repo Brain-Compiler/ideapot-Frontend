@@ -12,9 +12,9 @@ const ProductList = () => {
 
   useEffect(() => {
     (async () => {
-      await axios
-        .get("http://localhost:8080/api/idea")
-        .then((res) => setData(res.data));
+      await axios.get("http://localhost:8080/api/idea").then((res) => {
+        setData(res.data);
+      });
     })();
   }, []);
 
@@ -40,20 +40,19 @@ const ProductList = () => {
             </Link>
           </div>
           <div className={styles.posts}>
-            <div className={styles.postsSub}>
-              {data.map((list, index) => {
-                return (
-                  <Post
-                    id={list.id}
-                    title={list.title}
-                    price={list.price}
-                    date={list.createdAt}
-                    name={list.user.name}
-                    key={index}
-                  />
-                );
-              })}
-            </div>
+            {data.map((list, index) => {
+              return (
+                <Post
+                  files={list.files}
+                  id={list.id}
+                  title={list.title}
+                  price={list.price}
+                  date={list.createdAt}
+                  name={list.user.name}
+                  key={index}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

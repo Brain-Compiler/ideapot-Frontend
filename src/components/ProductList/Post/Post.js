@@ -1,12 +1,19 @@
 import styles from "./Post.module.scss";
-import img from "../../../assets/background.jpg";
 import { Link } from "react-router-dom";
+import defaultImg from "../../../assets/default_image.png";
 
-const Post = ({ id, title, price, date, name }) => {
+const Post = ({ files, id, title, price, date, name }) => {
   return (
-    <Link to={"/ProductList/" + id} className={styles.card}>
+    <Link to={"/ProductList/Post/" + id} className={styles.card}>
       <div className={styles.imgArea}>
-        <img alt="img" src={img} />
+        <img
+          alt="img"
+          src={
+            files[0] === undefined
+              ? defaultImg
+              : "http://localhost:8080/image/idea/" + files[0].name
+          }
+        />
       </div>
       <div className={styles.main}>
         <p className={styles.title}>{title}</p>

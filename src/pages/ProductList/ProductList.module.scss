@@ -64,13 +64,9 @@
 
       .posts {
         width: 100%;
-
-        .postsSub {
-          display: flex;
-          margin-left: -12px;
-          width: calc(100% + 25px);
-          flex-wrap: wrap;
-        }
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-gap: 20px;
       }
     }
   }
