@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: 0;
+}
+
+.background {
+  background-color: #f0f0f0;
+}
+
 $color-logo: #9776ff;
 $url-assets: "/assets/";
 $width-base: 1450px;

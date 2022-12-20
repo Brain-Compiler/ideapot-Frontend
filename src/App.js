@@ -1,4 +1,4 @@
-import "./styles/Reset.scss";
+import "./styles/Global.scss";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Router from "./Router";
