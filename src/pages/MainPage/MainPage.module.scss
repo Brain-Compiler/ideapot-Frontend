@@ -1,8 +1,12 @@
 @import "src/styles/Global.scss";
 
 .wrap {
+  margin: 0;
+  padding: 0;
+
   .box {
-    height: 3000px;
+    height: 2300px;
+    background-color: white;
 
     .tipBox {
       display: flex;
@@ -25,6 +29,116 @@
       img {
         width: 500px;
         border-radius: 30px;
+      }
+    }
+
+    .serviceBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .sertitle {
+        padding-left: 300px;
+        h1 {
+          font-size: 43px;
+        }
+
+        a {
+          color: #9776ff;
+        }
+      }
+
+      .serConFun {
+        height: 700px;
+        display: flex;
+        margin: auto;
+        margin-top: 120px;
+        flex-direction: column;
+
+        .sertop {
+          display: flex;
+
+          .seridea {
+            display: flex;
+            justify-content: center;
+            //background-color: aqua;
+
+            .serideatext {
+              margin-top: 110px;
+              margin-left: 20px;
+
+              h3 {
+                color: #909090;
+                font-size: 23px;
+              }
+            }
+          }
+          
+          .sercom {
+            display: flex;
+            margin-left: 200px;
+            justify-content: center;
+            //background-color: aquamarine;
+
+            .sercomtext {
+              margin-top: 110px;
+              margin-left: 20px;
+
+              h3 {
+                color: #909090;
+                font-size: 23px;
+              }
+            }
+          }
+        }
+
+        .serbot {
+          display: flex;
+          padding-top: 200px;
+
+          .serent {
+            display: flex;
+            justify-content: center;
+            //background-color: yellow;
+
+            .serenttext {
+              margin-top: 110px;
+              margin-left: 20px;
+
+              h3 {
+                color: #909090;
+                font-size: 23px;
+              }
+            }
+          }
+          
+          .serSercen {
+            display: flex;
+            margin-left: 223px;
+            justify-content: center;
+            //background-color: orange;
+
+            .serSercentext {
+              margin-top: 110px;
+              margin-left: 20px;
+
+              h3 {
+                color: #909090;
+                font-size: 23px;
+              }
+            }
+          }
+        }
+
+        .serbot {
+          display: flex;
+        }
+
+        img {
+          width: 240px;
+          height: 240px;
+          border-radius: 30px;
+        }
       }
     }
   }
