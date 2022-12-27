@@ -6,8 +6,8 @@ const Nav = () => {
   return (
     <div className={styles.wrap}>
       <div className={styles.box}>
-        <Link to="/ProductList" className={styles.category}>
-          <FaBars /> <p>카테고리</p> <FaCaretDown />
+        <Link to="/ProductList" className={styles.categoryBox}>
+          <FaBars /> <p>카테고리</p>
         </Link>
         <div className={styles.etc}>
           <Link>엔터프라이즈</Link>
