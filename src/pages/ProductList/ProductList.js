@@ -3,20 +3,32 @@ import styles from "./ProductList.module.scss";
 import Category from "../../components/ProductList/Category/Category";
 import Post from "../../components/ProductList/Post/Post";
 import write from "../../assets/write_icon.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
 import axios from "axios";
 
 const ProductList = () => {
   const [data, setData] = useState([]);
+  const params = useParams();
+  const id = params.id;
 
   useEffect(() => {
-    (async () => {
-      await axios.get("http://localhost:8080/api/idea").then((res) => {
-        setData(res.data);
-      });
-    })();
-  }, []);
+    if (id === undefined) {
+      (async () => {
+        await axios.get("http://localhost:8080/api/idea").then((res) => {
+          setData(res.data);
+        });
+      })();
+    } else {
+      (async () => {
+        await axios
+          .get("http://localhost:8080/api/idea/category/" + id)
+          .then((res) => {
+            setData(res.data);
+          });
+      })();
+    }
+  }, [id]);
 
   return (
     <div className={styles.wrap}>
@@ -40,19 +52,23 @@ const ProductList = () => {
             </Link>
           </div>
           <div className={styles.posts}>
-            {data.map((list, index) => {
-              return (
-                <Post
-                  files={list.files}
-                  id={list.id}
-                  title={list.title}
-                  price={list.price}
-                  date={list.createdAt}
-                  name={list.user.name}
-                  key={index}
-                />
-              );
-            })}
+            {data !== "" ? (
+              data.map((list, index) => {
+                return (
+                  <Post
+                    files={list.files}
+                    id={list.id}
+                    title={list.title}
+                    price={list.price}
+                    date={list.createdAt}
+                    name={list.user.name}
+                    key={index}
+                  />
+                );
+              })
+            ) : (
+              <p>목록이 없습니다.</p>
+            )}
           </div>
         </div>
       </div>
