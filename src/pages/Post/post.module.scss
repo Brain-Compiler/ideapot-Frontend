@@ -95,23 +95,27 @@
 
       .photo {
         padding-top: 60px;
-      }
-
-      .imgBox {
-        width: 350px;
-        margin: 10px;
-        padding: 5px;
-        border-radius: 7px;
-        background-color: #f6f6f6;
 
         input[type="file"] {
-          width: 330px;
+          display: none;
         }
 
-        span {
-          width: 20px;
-          text-align: center;
-          display: inline-block;
+        .addImgs {
+          cursor: pointer;
+          margin-left: 10px;
+          color: #f6f6f6;
+          background-color: #9776ff;
+          padding: 3px 10px;
+          border: none;
+          border-radius: 10px;
+        }
+
+        .imgBox {
+          width: 350px;
+          background-color: #dfdfdf;
+          padding: 5px;
+          margin: 10px 0;
+          border-radius: 50px;
         }
       }
 
@@ -157,22 +161,11 @@
           font-size: 15px;
           border-radius: 7px;
           background-color: #9776ff;
+          cursor: pointer;
         }
       }
     }
   }
-}
-
-.cnrkgkrl > p {
-  padding-bottom: 10px;
-}
-
-.cnrkgkrl > p > label {
-  font-size: 0.7rem;
-  color: white;
-  background-color: #9776ff;
-  padding: 3px 5px;
-  border-radius: 20%;
 }
 
 input[type="file"]::file-selector-button {

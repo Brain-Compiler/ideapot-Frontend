@@ -1,19 +1,62 @@
-import { createRef, useState } from "react";
+import { useState, useEffect } from "react";
 import document from "../../assets/document.png";
-import File from "./file";
+import Imgs from "../../components/Post/Imgs/Imgs";
+import axios from "axios";
+import { useRef } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "@toast-ui/editor/dist/i18n/ko-kr";
 import "tui-color-picker/dist/tui-color-picker.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
-import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 
 import styles from "./post.module.scss";
 import "./post.module.scss";
 
 const Post = () => {
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCatogory] = useState("");
+  const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [discription, setDiscription] = useState("");
+  const [imgs, setImgs] = useState([]);
+  const editorRef = useRef();
+
+  useEffect(() => {
+    (async () => {
+      await axios
+        .get("http://localhost:8080/api/idea/category")
+        .then((res) => setCategories(res.data));
+    })();
+  }, []);
+
+  async function uploadPost() {
+    await axios.post("http://localhost:8080/api/idea", {
+      title: title,
+      discription: discription,
+      category2: selectedCategory,
+      price: price,
+    });
+  }
+
+  function checkInputHandler() {
+    if (selectedCategory === "") {
+      alert("카테고리를 선택해주세요");
+      return false;
+    } else if (title === "") {
+      alert("제목을 입력해주세요");
+      return false;
+    } else if (price === "") {
+      alert("가격을 입력해주세요");
+      return false;
+    } else if (discription === "") {
+      alert("내용을 입력해주세요");
+      return false;
+    } else {
+      uploadPost();
+    }
+  }
+
   function inputNumberFormat(obj) {
     if (!/^[0-9]+$/.test(obj.value)) {
       setPrice(obj.value.slice(0, -1));
@@ -28,6 +71,19 @@ const Post = () => {
   function uncomma(str) {
     str = String(str);
     return str.replace(/[^\d]+/g, "");
+  }
+
+  function changeEditorHandler() {
+    setDiscription(editorRef.current.getInstance().getMarkdown());
+    console.log(discription);
+  }
+
+  function addImg(img) {
+    setImgs([img[0], ...imgs]);
+  }
+
+  function deleteImg(img, index) {
+    setImgs(imgs.splice(index, index + 1));
   }
 
   return (
@@ -48,25 +104,67 @@ const Post = () => {
             <p>카테고리</p>
             <div className={styles.categoryInput}>
               <select className={styles.category1}>
-                <option></option>
+                <option value="" selected>
+                  카테고리를 선택해주세요
+                </option>
+                {categories.map((category, index) => {
+                  return (
+                    <option
+                      value={category[Object.keys(category)]}
+                      key={index}
+                      onChange={(e) => setSelectedCatogory(e.target.value)}
+                    >
+                      {category[Object.keys(category)]}
+                    </option>
+                  );
+                })}
               </select>
-              <select className={styles.category2}></select>
-              <select className={styles.category3}></select>
             </div>
           </div>
           <div className={styles.subjectInput}>
             <p>제목</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className={styles.photo}>
-            <File />
+            <span>사진</span>
+            <input
+              type="file"
+              id="addImgs"
+              accept="img/*"
+              onChange={(e) => {
+                addImg(e.target.files);
+              }}
+            />
+            <label htmlFor="addImgs" className={styles.addImgs}>
+              추가하기
+            </label>
+            {imgs.map((img, index) => {
+              if (img !== undefined) {
+                return (
+                  <div className={styles.imgBox} key={index}>
+                    <span>{img.name}</span>
+                    <input
+                      type="button"
+                      onClick={() => {
+                        deleteImg(img, index);
+                      }}
+                      value="삭제하기"
+                    />
+                  </div>
+                );
+              }
+            })}
           </div>
           <div className={styles.priceInput}>
             <p>가격</p>
             <input
               value={price}
               onChange={(e) => inputNumberFormat(e.target)}
-              type="type"
+              type="text"
               maxLength={20}
             />
           </div>
@@ -77,11 +175,18 @@ const Post = () => {
               initialEditType="wysiwyg"
               language="ko-KR"
               placeholder="여기에 입력해주세요"
-              plugins={[colorSyntax]}
+              hideModeSwitch={true}
+              ref={editorRef}
+              onChange={changeEditorHandler}
+              toolbarItems={[]}
             />
           </div>
           <div className={styles.uploadbtn}>
-            <input type="button" value="업로드" />
+            <input
+              type="button"
+              value="업로드"
+              onClick={() => checkInputHandler()}
+            />
           </div>
         </div>
       </div>

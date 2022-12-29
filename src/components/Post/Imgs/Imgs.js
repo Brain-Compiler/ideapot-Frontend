@@ -1,6 +1,5 @@
 import { useState } from "react";
-import styles from "./post.module.scss";
-import "./post.module.scss";
+import styles from "./Imgs.module.scss";
 
 const File = () => {
   const [file, setFile] = useState([]);
@@ -23,6 +22,8 @@ const File = () => {
     }
     return array;
   }
+
+  function deleteFileInput(index) {}
 
   return (
     <div className={styles.cnrkgkrl}>
