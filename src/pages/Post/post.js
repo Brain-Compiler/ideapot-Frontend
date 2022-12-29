@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import document from "../../assets/document.png";
-import Imgs from "../../components/Post/Imgs/Imgs";
 import axios from "axios";
 import { useRef } from "react";
 import { Editor } from "@toast-ui/react-editor";
@@ -20,6 +19,7 @@ const Post = () => {
   const [price, setPrice] = useState("");
   const [discription, setDiscription] = useState("");
   const [imgs, setImgs] = useState([]);
+  const [render, setRender] = useState(false);
   const editorRef = useRef();
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const Post = () => {
       discription: discription,
       category2: selectedCategory,
       price: price,
+      files: imgs,
     });
   }
 
@@ -82,9 +83,13 @@ const Post = () => {
     setImgs([img[0], ...imgs]);
   }
 
-  function deleteImg(img, index) {
-    setImgs(imgs.splice(index, index + 1));
+  function deleteImg(props) {
+    const index = imgs.findIndex((img) => img.name === props.name);
+    imgs.splice(index, 1);
+    setRender(!render);
   }
+
+  // console.log(imgs);
 
   return (
     <div className={styles.wrapper}>
@@ -103,7 +108,10 @@ const Post = () => {
           <div className={styles.input}>
             <p>카테고리</p>
             <div className={styles.categoryInput}>
-              <select className={styles.category1}>
+              <select
+                className={styles.category1}
+                onChange={(e) => setSelectedCatogory(e.target.value)}
+              >
                 <option value="" selected>
                   카테고리를 선택해주세요
                 </option>
@@ -150,7 +158,7 @@ const Post = () => {
                     <input
                       type="button"
                       onClick={() => {
-                        deleteImg(img, index);
+                        deleteImg(img);
                       }}
                       value="삭제하기"
                     />
